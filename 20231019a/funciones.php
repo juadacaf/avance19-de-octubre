@@ -67,8 +67,9 @@
         //es para que muestre el resultado
         while($fila = $imprimir->fetch_assoc())
         {
-        //imprime en el navegador la variable 'SUMA'
+        //primer numero
         $salida += $fila['n1'];
+        //segundo numero
         $salida += $fila['n2'];
         }
         
@@ -108,6 +109,35 @@
 
        //retorna la función
         return $salida;
+    }
+
+    function contar_usuarios(){
+        //inicializa la variable
+        $salida="";
+
+        //conecta a una base de datos
+        $conexion = mysqli_connect('localhost','root','','db_ejemplo');
+
+         //es una suma de una base de datos 
+         $sql=" SELECT count(*) AS contar FROM tb_usuarios ";
+
+         //da el resultado 
+         $imprimir= $conexion->query("$sql");
+ 
+         //es para que muestre el resultado
+         while($fila = $imprimir->fetch_assoc())
+         {
+         //imprime en el navegador la variable 'SUMA'
+         $salida .=$fila['contar'];
+         }
+         
+         //cierra la conexion
+        $conexion->close();
+ 
+        //retorna la función
+         return $salida;
+    
+
     }
 
 

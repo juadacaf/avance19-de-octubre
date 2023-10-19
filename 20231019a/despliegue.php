@@ -15,4 +15,9 @@
 
 
     //imprime la función
-    echo calculo3();
+    //echo calculo3();
+
+      //imprime la función
+      echo contar_usuarios();
+
+    
