@@ -10,3 +10,14 @@
         //retorna la función
         return $salida;
     }
+
+    
+    //funcion para calcular el area de un rectángulo
+    function calcular(){
+    //inicializa la variable
+    $salida=0;
+    //calcula el area de un rectángulo
+    $salida=4*8;
+    //retorna la función
+    return $salida;
+    }
