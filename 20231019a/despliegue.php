@@ -8,4 +8,11 @@
     //echo calcular();
 
     //imprime la función
-    echo conexion();
+    //echo conexion();
+
+    //imprime la función
+    //echo calculo2();
+
+
+    //imprime la función
+    echo calculo3();

@@ -1,7 +1,7 @@
 <?php
 
     //Es una impresión que se mostrara en los archivos que esten incluidos 
-    echo "Hola=";
+    
     function consulta(){
         //inicializa la variable
         $salida=0;
@@ -42,6 +42,67 @@
         //imprime en el navegador la variable 'SUMA'
         $salida.=$fila['SUMA'];
         }
+        
+        //cierra la conexion
+       $conexion->close();
+
        //retorna la función
         return $salida;
     }
+
+    
+    function calculo2(){
+        //inicializa la variable
+        $salida=0;
+        //conecta a una base de datos
+        $conexion = mysqli_connect('localhost','root','','db_ejemplo');
+        //es una suma de una base de datos 
+        $sql=" SELECT 10 as n1, 20 as n2 ";
+        
+        //da el resultado 
+        $imprimir= $conexion->query("$sql");
+
+        //es para que muestre el resultado
+        while($fila = $imprimir->fetch_array())
+        {
+        //imprime en el navegador la variable 'SUMA'
+        $salida += $fila['0'];
+        $salida += $fila['1'];
+        }
+        
+        //cierra la conexion
+       $conexion->close();
+
+       //retorna la función
+        return $salida;
+    }
+
+    function calculo3(){
+        //inicializa la variable
+        $salida=0;
+        //conecta a una base de datos
+        $conexion = mysqli_connect('localhost','root','','db_ejemplo');
+        //es una suma de una base de datos 
+        $sql=" SELECT 10 as n1, 20 as n2 ";
+        
+        //da el resultado 
+        $imprimir= $conexion->query("$sql");
+
+        //es para que muestre el resultado
+        while($fila = $imprimir->fetch_assoc())
+        {
+        //imprime en el navegador la variable 'SUMA'
+        $salida += $fila['n1'];
+        $salida += $fila['n2'];
+        }
+        
+        //cierra la conexion
+       $conexion->close();
+
+       //retorna la función
+        return $salida;
+    }
+
+
+
+
