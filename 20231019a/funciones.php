@@ -140,5 +140,77 @@
 
     }
 
+    function registrar($documento,$nombre,$correo,$clave,$categoria)
+{
+      //inicializa la variable
+    $salida = "";
+    //conecta a una base de datos
+    $conexion = mysqli_connect('localhost','root','','db_ejemplo');
+    //inserta a una persona en la base de datos
+    $imprimir = "INSERT INTO tb_usuarios VALUES ('$documento','$nombre','$correo','$clave','$categoria')";
+    //es para que muestre el resultado
+    $slq = $conexion->query("$imprimir");
+    //cierra la conexion
+    $conexion->close();
+    //retorna la función
+    return $salida;
+    
+}
+//FUNCION PARA BORRAR PERSONAS
+function borrar($correo,$clave)
+{
+   
+        //inicializa la variable
+        $salida = "";
+        //conecta a una base de datos
+        $conexion = mysqli_connect('localhost','root','','db_ejemplo');
+     //BORRAR  a una persona en la base de datos
+    $imprimir = "DELETE FROM tb_usuarios where usuario_correo='$correo' and usuario_contrasena='$clave';";
+     //es para que muestre el resultado
+    $slq = $conexion->query("$imprimir");
+     //cierra la conexion
+    $conexion->close();
+    //retorna la función
+    return $salida;
+    
+}
+
+function actualizar($documento, $nombre, $correo, $clave, $categoria, $sitio,$invitacion)
+{
+    // Inicializa la variable
+    $salida = "";
+
+    // Conecta a la base de datos (reemplaza con tus propias credenciales)
+    $conexion = mysqli_connect('localhost', 'root', '', 'db_ejemplo');
+
+    // Actualiza el registro en la base de datos
+    $imprimir = "UPDATE tb_usuarios 
+                 SET usuario_nombre='$nombre', usuario_correo='$correo', usuario_contrasena='$clave', categoria_nombre='$categoria', sitio='$sitio' 
+                 WHERE id_usuario='$documento'";
+
+    // Ejecuta la consulta de actualización
+    $sql = $conexion->query($imprimir);
+
+    // Verifica si la actualización fue exitosa
+    if ($conexion->affected_rows > 0) {
+        $salida = "Registro actualizado con éxito.";
+
+        // Agrega un enlace al sitio web
+        $salida .= "<a href='$sitio'>$invitacion</a>";
+    } else {
+        $salida = "Error al actualizar el registro: " . mysqli_error($conexion);
+    }
+
+    // Cierra la conexión
+    $conexion->close();
+
+    // Retorna el mensaje de salida
+    return $salida;
+}
+    
+
+
+
+
 
 
