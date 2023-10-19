@@ -1,4 +1,6 @@
 <?php
+//conecta a una base de datos
+$conexion = mysqli_connect('localhost','root','','db_ejemplo');
     //Es una impresión que se mostrara en los archivos que esten incluidos 
     echo "Hola=";
     function consulta(){
@@ -11,7 +13,7 @@
         return $salida;
     }
 
-    
+
     //funcion para calcular el area de un rectángulo
     function calcular(){
     //inicializa la variable
